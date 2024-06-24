@@ -10,23 +10,21 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-
-  // display the total number of collected reviews from all categories
+// отображаем общее количество собранных отзывов из всех категорий
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
   };
 
-  // display the percentage of positive reviews
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
     const total = this.countTotalFeedback();
 
-    // if total is greater than 0, return the positive percentage, else 0
+    // если общее total 0, вернуть положительный процент, else 0
     return total > 0 ? Math.round((good / total) * 100) : 0;
   };
 
-  // update the state when a button is clicked
+  // обновить состояние при нажатии кнопки
   handleClick = type => {
     this.setState(prevState => ({
       ...prevState,
